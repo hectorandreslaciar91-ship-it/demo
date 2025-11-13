@@ -1,0 +1,44 @@
+.learning-notes-container {
+  margin-top: 40px;
+  padding: 25px;
+  background: linear-gradient(135deg, #f9f9f9 0%, #f0f0f0 100%);
+  border-radius: 12px;
+  border-left: 4px solid #667eea;
+}
+
+.learning-notes-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.learning-notes-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.learning-note-item {
+  padding: 10px 0;
+  padding-left: 20px;
+  color: #555;
+  font-size: 15px;
+  position: relative;
+  line-height: 1.6;
+}
+
+.learning-note-item:before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: #667eea;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.learning-note-item:not(:last-child) {
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 15px;
+}
+
