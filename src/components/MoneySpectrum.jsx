@@ -1,7 +1,13 @@
 import { useState } from 'react'
 import './MoneySpectrum.css'
 
-function MoneySpectrum({ onInsight }) {
+const PERSONALITY_CARDS = [
+  { icon: '💰', iconLabel: 'SAVE', label: 'Save for goals' },
+  { icon: '⚖️', iconLabel: 'BALANCE', label: 'Save & Enjoy' },
+  { icon: '💰', iconLabel: 'SPEND', label: 'YOLO' }
+]
+
+function MoneySpectrum({ onInsight, onRemoveInsight }) {
   const [sliderValue, setSliderValue] = useState(70)
   const [insightShown, setInsightShown] = useState(false)
   const [selectedCard, setSelectedCard] = useState(null)
@@ -61,16 +67,16 @@ function MoneySpectrum({ onInsight }) {
         
         <div className="spectrum-labels-below">
           <div className={`spectrum-label-item ${sliderValue < 25 ? 'highlighted' : ''}`}>
-            <span className="label-icon">🐷</span>
+            <span className="label-icon">SAVER</span>
             <span className="label-text">Super Saver</span>
           </div>
           <div className={`spectrum-label-item ${sliderValue >= 25 && sliderValue < 50 ? 'highlighted' : ''}`}>
-            <span className="label-icon">⚖️</span>
+            <span className="label-icon">BALANCE</span>
             <span className="label-text">Balanced</span>
           </div>
           
           <div className={`spectrum-label-item ${sliderValue >= 75 ? 'highlighted' : ''}`}>
-            <span className="label-icon">🛍️</span>
+            <span className="label-icon">SPENDER</span>
             <span className="label-text">Free Spender</span>
           </div>
         </div>
@@ -78,7 +84,6 @@ function MoneySpectrum({ onInsight }) {
 
       {insightShown && (
         <div className="live-insight">
-          <div className="insight-icon">👥</div>
           <div className="insight-text">
             <strong>Live Insight:</strong> You're more of a spender than {getPeerPercentage()}% of your peers!
           </div>
@@ -86,26 +91,46 @@ function MoneySpectrum({ onInsight }) {
       )}
 
       <div className="personality-cards-preview">
-        {[
-          { icon: '💰', label: 'Save for goals' },
-          { icon: '⚖️', label: 'Save & Enjoy' },
-          { icon: '🎉', label: 'YOLO' }
-        ].map((card, idx) => (
-          <div 
-            key={idx} 
-            className={`personality-preview-card ${selectedCard === idx ? 'selected' : ''}`}
-            onClick={() => {
-              setSelectedCard(idx)
-              // Add note when card is selected
-              if (onInsight && selectedCard !== idx) {
-                onInsight(`Selected: ${card.label}`)
-              }
-            }}
-          >
-            <div className="preview-icon">{card.icon}</div>
-            <div className="preview-label">{card.label}</div>
-          </div>
-        ))}
+        {PERSONALITY_CARDS.map((card, idx) => {
+          const noteText = `Selected: ${card.label}`
+          const isSelected = selectedCard === idx
+          
+          return (
+            <div 
+              key={idx} 
+              className={`personality-preview-card ${isSelected ? 'selected' : ''}`}
+              onClick={() => {
+                if (isSelected) {
+                  // Card is already selected, deselect it and remove note
+                  setSelectedCard(null)
+                  if (onRemoveInsight) {
+                    onRemoveInsight(noteText)
+                  }
+                } else {
+                  // Card is not selected
+                  // If another card was selected, remove its note first
+                  if (selectedCard !== null) {
+                    const previousCard = PERSONALITY_CARDS[selectedCard]
+                    if (onRemoveInsight) {
+                      onRemoveInsight(`Selected: ${previousCard.label}`)
+                    }
+                  }
+                  // Select the new card and add note
+                  setSelectedCard(idx)
+                  if (onInsight) {
+                    onInsight(noteText)
+                  }
+                }
+              }}
+            >
+              <div className="preview-icon-wrapper">
+                <span className="preview-icon-emoji">{card.icon}</span>
+                <span className="preview-icon-label">{card.iconLabel}</span>
+              </div>
+              <div className="preview-label">{card.label}</div>
+            </div>
+          )
+        })}
       </div>
     </div>
   )

@@ -8,27 +8,27 @@ function PersonalityCards({ onSelect }) {
   const personalityTypes = [
     {
       title: 'Money Driven',
-      icon: '🎯',
+      icon: 'DRIVEN',
       traits: ['Careful planner', 'Saves first', 'Goal-oriented', 'Feels secure with savings'],
       percentage: 28,
-      color: '#a8e6cf',
-      gradient: 'linear-gradient(135deg, #a8e6cf 0%, #7dd3a0 100%)'
+      color: '#0f172a',
+      gradient: '#ffffff'
     },
     {
       title: 'Money Careful',
-      icon: '⚖️',
+      icon: 'CAREFUL',
       traits: ['Balanced approach', 'Saves and spends', 'Flexible with money', 'Conscious decisions'],
       percentage: 45,
-      color: '#f0f4ff',
-      gradient: 'linear-gradient(135deg, #a8d8ea 0%, #f0f4ff 100%)'
+      color: '#0f172a',
+      gradient: '#ffffff'
     },
     {
       title: 'Money Care-Free',
-      icon: '🎉',
+      icon: 'CARE-FREE',
       traits: ['Lives in moment', 'Enjoys spending', 'Values experiences', 'Optimistic about money'],
       percentage: 27,
-      color: '#d4a5f9',
-      gradient: 'linear-gradient(135deg, #d4a5f9 0%, #b794f6 100%)'
+      color: '#0f172a',
+      gradient: '#ffffff'
     }
   ]
 
@@ -68,7 +68,7 @@ function PersonalityCards({ onSelect }) {
             </div>
             {selectedCard === idx && (
               <div className="personality-question">
-                Could this be you? 🤔
+                Could this be you?
               </div>
             )}
           </div>

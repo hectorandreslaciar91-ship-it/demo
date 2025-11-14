@@ -61,7 +61,7 @@ function ScenarioReveal({ selectedPersonality }) {
 
       <div className="scenario-card">
         <h3 className="scenario-question">
-          Scenario: You just got $100 for your birthday! 🎂
+          Scenario: You just got $100 for your birthday
         </h3>
         <p className="scenario-subquestion">What would each personality type do?</p>
       </div>
@@ -139,7 +139,7 @@ function ScenarioReveal({ selectedPersonality }) {
       {userChoice && (
         <div className="assessment-prompt">
           <button className="assessment-btn" onClick={handleStartAssessment}>
-            🎓 Start Assessment
+            Start Assessment
           </button>
         </div>
       )}

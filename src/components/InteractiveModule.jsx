@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+
 import ProgressBar from './ProgressBar'
 import PersonalityCards from './PersonalityCards'
 import MoneySpectrum from './MoneySpectrum'
@@ -70,7 +71,7 @@ function InteractiveModule() {
                   setPoints(prev => prev + 10)
                 }}
               >
-                <div className="intro-icon">🐷</div>
+                <div className="intro-icon">SAVER</div>
                 <h3>Save Your Money</h3>
                 <p className="intro-prompt">Do you:</p>
                 <ul>
@@ -91,7 +92,7 @@ function InteractiveModule() {
                   setPoints(prev => prev + 10)
                 }}
               >
-                <div className="intro-icon">🛒</div>
+                <div className="intro-icon">SPENDER</div>
                 <h3>Spend Your Money</h3>
                 <p className="intro-prompt">Do you:</p>
                 <ul>
@@ -108,7 +109,6 @@ function InteractiveModule() {
             </div>
             {selectedIntroCard && (
               <div className="intro-insight-message">
-                <div className="insight-icon">💡</div>
                 <div className="insight-text">
                   Great choice! But here's the thing... <strong>most people are actually BOTH!</strong>
                 </div>
@@ -117,7 +117,7 @@ function InteractiveModule() {
           </div>
         )
       case 2:
-        return <MoneySpectrum onInsight={addNote} />
+        return <MoneySpectrum onInsight={addNote} onRemoveInsight={removeNote} />
       case 3:
         return <BuildingBlocks onProgress={setPoints} />
       case 4:
@@ -126,10 +126,10 @@ function InteractiveModule() {
             <h2 className="step-title">What Shapes Your Money Personality?</h2>
             <div className="influence-cards">
               {[
-                { icon: '👨‍👩‍👧', label: 'Family', desc: 'How your family talks about money' },
-                { icon: '🎯', label: 'Goals', desc: 'What you want to achieve' },
-                { icon: '😊', label: 'Emotions', desc: 'How money makes you feel' },
-                { icon: '✨', label: 'Experiences', desc: 'Your past with money' }
+                { icon: 'FAMILY', label: 'Family', desc: 'How your family talks about money' },
+                { icon: 'GOALS', label: 'Goals', desc: 'What you want to achieve' },
+                { icon: 'EMOTIONS', label: 'Emotions', desc: 'How money makes you feel' },
+                { icon: 'EXPERIENCES', label: 'Experiences', desc: 'Your past with money' }
               ].map((item, idx) => {
                 const isSelected = selectedInfluenceCards.includes(idx)
                 return (

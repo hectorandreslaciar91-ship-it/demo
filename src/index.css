@@ -10,11 +10,39 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: #0f172a;
   min-height: 100vh;
+  color: #1e293b;
 }
 
 #root {
   min-height: 100vh;
+}
+
+/* Custom scrollbar styling - reduced height */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1e293b;
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #475569;
+  border-radius: 0;
+  min-height: 30px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+/* Firefox scrollbar styling */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #475569 #1e293b;
 }
 

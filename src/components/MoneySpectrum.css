@@ -3,18 +3,19 @@
 }
 
 .spectrum-title {
-  font-size: 24px;
+  font-size: 36px;
   font-weight: 700;
-  color: #333;
-  margin-bottom: 10px;
-  text-align: center;
+  color: #0f172a;
+  margin-bottom: 12px;
+  text-align: left;
+  letter-spacing: -0.8px;
 }
 
 .spectrum-question {
   font-size: 18px;
-  color: #666;
-  text-align: center;
-  margin-bottom: 30px;
+  color: #64748b;
+  text-align: left;
+  margin-bottom: 40px;
 }
 
 .spectrum-slider-container {
@@ -24,8 +25,9 @@
 .spectrum-bar {
   position: relative;
   height: 50px;
-  border-radius: 8px;
+  border-radius: 0;
   margin: 20px 0 10px 0;
+  border: 2px solid #e2e8f0;
 }
 
 .spectrum-labels-below {
@@ -45,23 +47,37 @@
 }
 
 .label-icon {
-  font-size: 20px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #64748b;
+  padding: 6px 10px;
+  border: 1px solid #e2e8f0;
+  margin-bottom: 8px;
 }
 
 .label-text {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
-  color: #666;
+  color: #64748b;
   text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .spectrum-label-item.highlighted .label-text {
-  color: #2563eb;
+  color: #0f172a;
   font-weight: 700;
-  padding: 4px 8px;
-  border: 2px solid #2563eb;
-  border-radius: 6px;
-  background: rgba(37, 99, 235, 0.1);
+  padding: 6px 12px;
+  border: 2px solid #0f172a;
+  border-radius: 0;
+  background: #f8fafc;
+}
+
+.spectrum-label-item.highlighted .label-icon {
+  color: #0f172a;
+  border-color: #0f172a;
 }
 
 .spectrum-slider {
@@ -81,33 +97,33 @@
 .spectrum-slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: #2563eb;
-  border: 3px solid white;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  width: 32px;
+  height: 32px;
+  border-radius: 0;
+  background: #0f172a;
+  border: 2px solid #0f172a;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   cursor: pointer;
 }
 
 .spectrum-slider::-moz-range-thumb {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: #2563eb;
-  border: 3px solid white;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  width: 32px;
+  height: 32px;
+  border-radius: 0;
+  background: #0f172a;
+  border: 2px solid #0f172a;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   cursor: pointer;
-  border: none;
 }
 
 .live-insight {
   display: flex;
   align-items: center;
   gap: 15px;
-  padding: 18px 20px;
-  background: #e0f2fe;
-  border-radius: 8px;
+  padding: 20px 24px;
+  background: #f8fafc;
+  border: 2px solid #0f172a;
+  border-radius: 0;
   margin: 30px 0;
   animation: slideIn 0.3s ease;
 }
@@ -130,49 +146,88 @@
 .insight-text {
   flex: 1;
   font-size: 16px;
-  color: #333;
+  color: #0f172a;
   line-height: 1.5;
+}
+
+.insight-text strong {
+  color: #0f172a;
 }
 
 .personality-cards-preview {
   display: flex;
-  justify-content: center;
-  gap: 20px;
+  justify-content: flex-start;
+  gap: 16px;
   margin-top: 30px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  width: 100%;
 }
 
 .personality-preview-card {
-  padding: 20px 25px;
-  border-radius: 12px;
-  border: 2px solid #e0e0e0;
-  background: white;
+  flex: 1;
+  min-width: 140px;
+  max-width: 200px;
+  padding: 24px 20px;
+  border-radius: 0;
+  border: 2px solid #e2e8f0;
+  background: #ffffff;
   text-align: center;
   cursor: pointer;
   transition: all 0.2s;
-  min-width: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 
 .personality-preview-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  border-color: #667eea;
+  border-color: #0f172a;
+  background: #f8fafc;
 }
 
 .personality-preview-card.selected {
-  background: #f5f5f5;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  border-color: #ccc;
+  background: #f1f5f9;
+  border-color: #0f172a;
+  border-width: 2px;
 }
 
-.preview-icon {
+.preview-icon-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  width: 100%;
+}
+
+.preview-icon-emoji {
   font-size: 32px;
-  margin-bottom: 8px;
+  line-height: 1;
+  display: block;
+}
+
+.preview-icon-label {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: #64748b;
+  padding: 4px 8px;
+  border: 1px solid #e2e8f0;
+  display: inline-block;
+}
+
+.personality-preview-card.selected .preview-icon-label {
+  color: #0f172a;
+  border-color: #0f172a;
 }
 
 .preview-label {
-  font-weight: 500;
-  color: #333;
+  font-weight: 600;
+  color: #0f172a;
   font-size: 14px;
+  text-align: center;
+  line-height: 1.4;
 }
 
