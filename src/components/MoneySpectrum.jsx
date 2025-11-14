@@ -1,10 +1,11 @@
 import { useState } from 'react'
+import { FaPiggyBank, FaBalanceScale, FaRocket } from 'react-icons/fa'
 import './MoneySpectrum.css'
 
 const PERSONALITY_CARDS = [
-  { icon: '💰', iconLabel: 'SAVE', label: 'Save for goals' },
-  { icon: '⚖️', iconLabel: 'BALANCE', label: 'Save & Enjoy' },
-  { icon: '💰', iconLabel: 'SPEND', label: 'YOLO' }
+  { Icon: FaPiggyBank, iconLabel: 'SAVE', label: 'Save for goals' },
+  { Icon: FaBalanceScale, iconLabel: 'BALANCE', label: 'Save & Enjoy' },
+  { Icon: FaRocket, iconLabel: 'SPEND', label: 'YOLO' }
 ]
 
 function MoneySpectrum({ onInsight, onRemoveInsight }) {
@@ -94,6 +95,7 @@ function MoneySpectrum({ onInsight, onRemoveInsight }) {
         {PERSONALITY_CARDS.map((card, idx) => {
           const noteText = `Selected: ${card.label}`
           const isSelected = selectedCard === idx
+          const IconComponent = card.Icon
           
           return (
             <div 
@@ -124,7 +126,9 @@ function MoneySpectrum({ onInsight, onRemoveInsight }) {
               }}
             >
               <div className="preview-icon-wrapper">
-                <span className="preview-icon-emoji">{card.icon}</span>
+                <div className="preview-icon-container">
+                  <IconComponent className="preview-icon" />
+                </div>
                 <span className="preview-icon-label">{card.iconLabel}</span>
               </div>
               <div className="preview-label">{card.label}</div>
